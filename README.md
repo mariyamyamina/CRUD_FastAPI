@@ -1,6 +1,7 @@
-# 📝 FastAPI Blog CRUD API
+# 📝 FastAPI Blog Application
 
-This project is a simple REST API for blog management built using **FastAPI**. It supports full CRUD operations (Create, Read, Update, Delete) with an in-memory data store.
+A simple full-stack blog application built using **React** (frontend) and **FastAPI** (backend).  
+Users can create, edit, delete, and view blog posts.
 
 ## 🚀 Features
 
@@ -17,11 +18,16 @@ This project is a simple REST API for blog management built using **FastAPI**. I
 - Uvicorn (ASGI server)
 - Pydantic (for data validation)
 
-## Install Dependencies
+## Run the Backend
 ```bash
+cd backend
 pip install fastapi uvicorn
-```
-## Run the server
-```bash
 uvicorn main:app --reload
+```
+## Run the Frontend
+```bash
+cd blog
+npm install
+npm start
+
 ```

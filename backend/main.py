@@ -1,4 +1,5 @@
 from fastapi import FastAPI, HTTPException
+from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 from typing import Optional, List
 from motor.motor_asyncio import AsyncIOMotorClient
@@ -8,8 +9,21 @@ import os
 
 app = FastAPI()
 
-load_dotenv() 
+# CORS setup
+origins = [
+    "http://localhost:3000",  # React development server
+]
 
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,     
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
+# Load environment variables
+load_dotenv() 
 MONGODB_URI = os.getenv("MONGODB_URI")
 
 # MongoDB Connection
@@ -20,7 +34,7 @@ collection = db.blogs
 # Pydantic Model
 class Blog(BaseModel):
     title: str
-    author:str
+    author: str
     content: str
     published: Optional[bool] = True
 
